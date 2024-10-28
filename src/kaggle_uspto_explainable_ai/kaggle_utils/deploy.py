@@ -10,7 +10,6 @@ from pathlib import Path
 import fire
 from kaggle import KaggleApi
 from loguru import logger
-from transformers import AutoConfig, AutoTokenizer
 
 KAGGLE_USERNAME = os.getenv("KAGGLE_USERNAME")
 
@@ -67,6 +66,8 @@ class Deploy:
 
     def push_huguingface_model(self, model_name: str | None = None) -> None:
         """Push huggingface model and transformer to kaggle dataset."""
+        from transformers import AutoConfig, AutoTokenizer
+
         if model_name is None:
             raise ValueError("model_name is required.")
 
